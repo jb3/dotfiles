@@ -22,7 +22,7 @@
 (tool-bar-mode -1)
 
 
-(set-frame-font "Liberation Mono 12" nil t)
+(set-frame-font "FiraCode Nerd Font 10" nil t)
 
 ;; }}}
 
