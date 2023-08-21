@@ -1,0 +1,33 @@
+#! /bin/sh
+
+export GTK_THEME=Adwaita:dark
+export CM_LAUNCHER=rofi
+
+PROCS=(sxhkd polybar dunst picom flameshot clipmenud)
+
+for proc in "${PROCS[@]}"; do
+	pgrep -x $proc > /dev/null || $proc &
+done;
+
+setxkbmap gb
+
+bspc monitor -d $(seq 1 1 9) 0
+
+bspc config border_width        3
+bspc config window_gap          5
+bspc config top_padding         34
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a "Discord Updater" state=floating
+bspc rule -a "Viewnior" state=floating
+bspc rule -a Emacs state=tiled
+bspc rule -a emacs state=tiled
+bspc rule -a "Main" state=floating
+bspc rule -a "firefox-nightly" state=tiled
+
+pkill unclutter && unclutter --timeout 1 --hide-on-touch &
+
+feh --bg-scale ~/Pictures/background.png
