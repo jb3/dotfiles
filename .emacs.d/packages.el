@@ -47,7 +47,7 @@
                                                   :v-adjust 0.0
                                                   :face 'dashboard-heading))
     (insert "\n\n")
-    (insert (kanye-quote)))
+    (insert (string-fill (kanye-quote) 50)))
 
   (add-to-list 'dashboard-item-generators  '(kanye . dashboard-insert-kanye))
   (add-to-list 'dashboard-items '(kanye) t)
