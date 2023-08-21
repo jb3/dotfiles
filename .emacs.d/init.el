@@ -1,6 +1,12 @@
 
 ;; Dashboard Things {{{
 
+(defun kanye-quote () 
+  (cdr (assoc 'quote (request-response-data (request "https://api.kanye.rest" 
+  :parser 'json-read 
+  :sync t))))
+)
+
 ;; }}}
 
 ;; =-=-=- LOAD PACKAGES HERE -=-=-=

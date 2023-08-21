@@ -38,7 +38,22 @@
   :ensure t
   :config
   (dashboard-setup-startup-hook)
-  :init  
+
+  (defun dashboard-insert-kanye (list-size)
+    (dashboard-insert-heading "Kanye Quote:"
+                            nil
+                            (all-the-icons-faicon "music"
+                                                  :height 1.2
+                                                  :v-adjust 0.0
+                                                  :face 'dashboard-heading))
+    (insert "\n\n")
+    (insert (kanye-quote)))
+
+  (add-to-list 'dashboard-item-generators  '(kanye . dashboard-insert-kanye))
+  (add-to-list 'dashboard-items '(kanye) t)
+  :init
+  
+  
   (setq dashboard-icon-type 'all-the-icons)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
