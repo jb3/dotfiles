@@ -10,6 +10,7 @@
 ;; }}}
 
 ;; =-=-=- LOAD PACKAGES HERE -=-=-=
+(load "~/.emacs.d/org-config.el")
 (load "~/.emacs.d/packages.el")
 
 ;; Theming & Appearance {{{

@@ -34,10 +34,36 @@
 (use-package page-break-lines :ensure t)
 (use-package projectile :ensure t)
 
+(defun open-reading-list ()
+  (interactive)
+  (find-file "~/org/reading-list.org" t)
+)
+
 (use-package dashboard
   :ensure t
   :config
   (dashboard-setup-startup-hook)
+
+  (defun dashboard-insert-reading (list-size)
+    (dashboard-insert-heading "Reading List:"
+			      nil
+			      (all-the-icons-faicon "book"
+						    :height 1.2
+						    :v-adjust 0.0
+						    :face 'dashboard-heading))
+    (insert "\n\n")
+
+    (let ((map (make-sparse-keymap)))
+     (define-key map [mouse-1] 'open-reading-list
+     (insert (propertize (format "%s Open Reading List" (all-the-icons-faicon "link" :height 1.2 :v-adjust 0.0)) 'keymap map 'mouse-face 'highlight 'help-echo "Click to open reading list") "\n\n")))
+    
+    (mapcar (lambda (arg) (progn			    
+			     (insert "- " (propertize (string-fill (cdr (assoc 'title arg)) 60) 'face 'dashboard-footer))
+			     (insert " (" (propertize (string-join (cdr (assoc 'tags arg)) ":") 'face 'dashboard-heading) ")\n")
+			     )
+			   ) (get-items-toread))
+
+    )
 
   (defun dashboard-insert-kanye (list-size)
     (dashboard-insert-heading "Kanye Quote:"
@@ -49,8 +75,10 @@
     (insert "\n\n")
     (insert (string-fill (kanye-quote) 50)))
 
-  (add-to-list 'dashboard-item-generators  '(kanye . dashboard-insert-kanye))
+  (add-to-list 'dashboard-item-generators '(kanye . dashboard-insert-kanye))
+  (add-to-list 'dashboard-item-generators '(reading . dashboard-insert-reading))
   (add-to-list 'dashboard-items '(kanye) t)
+  (add-to-list 'dashboard-items '(reading) t)
   :init
   
   
@@ -72,7 +100,7 @@
 
 ;; }}}
 
-;;; Elisp {{{
+;; Elisp {{{
 
 (use-package elisp-format
   :ensure t)
