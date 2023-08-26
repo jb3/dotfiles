@@ -16,3 +16,8 @@ export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
 alias ls=exa
 alias cat=bat
 alias grep=rg
+
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
+
+autoload -Uz compinit && compinit
