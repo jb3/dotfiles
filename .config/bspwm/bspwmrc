@@ -1,6 +1,6 @@
 #! /bin/sh
 
-export GTK_THEME=Adwaita:dark
+export GTK_THEME=Adwaita:light
 export CM_LAUNCHER=rofi
 
 PROCS=(sxhkd polybar dunst picom flameshot clipmenud)
