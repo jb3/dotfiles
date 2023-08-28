@@ -93,10 +93,98 @@
 
 ;; }}}
 
-;; Utility {{{
+;; Utility & Language Servers {{{
 
 (use-package request
   :ensure t)
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode +1)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  )
+
+(use-package helm
+  :ensure t
+  :custom-face
+  (helm-ff-file-extension ((t (:foreground "RosyBrown"))))
+
+  :custom
+  (helm-autoresize-max-height 0)
+  (helm-autoresize-min-height 20)
+  (helm-split-window-in-side-p t)
+  (helm-move-to-line-cycle-in-source t)
+  (helm-display-header-line nil)
+  (helm-ff-auto-update-initial-value nil)
+  (helm-find-files-doc-header nil)
+  (helm-ff-lynx-style-map nil)
+  (helm-display-buffer-default-width nil)
+  (helm-display-buffer-default-height 0.25)
+  (helm-ff-DEL-up-one-level-maybe t)
+  (helm-ff-fuzzy-matching t)
+  (helm-ff-newfile-prompt-p t)
+
+  :config
+  (helm-autoresize-mode 1)
+
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+  (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+  (define-key helm-map (kbd "C-z")  'helm-select-action)
+
+  (helm-mode 1)
+  )
+
+(use-package treemacs
+  :ensure t)
+
+(use-package treemacs-projectile
+  :ensure t)
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode))
+
+(use-package doom-modeline
+  :ensure t
+  :custom
+  (doom-modeline-minor-modes t)
+  (doom-modeline-enable-word-count t)
+  (doom-modeline-indent-info t)
+  (doom-modeline-vcs-max-length 20)
+  
+  :hook (after-init . doom-modeline-mode))
+
+(use-package nyan-mode
+  :ensure t
+  :custom
+  (nyan-animate-nyancat t)
+  (nyan-wavy-trail t)
+  :init
+  (nyan-mode))
+
+;; }}}
+
+;; Applications {{{
+
+(use-package calfw
+  :ensure t)
+
+(use-package calfw-org
+  :ensure t)
+
+(use-package elcord
+  :ensure t
+  :custom
+  (elcord-display-line-numbers nil)
+  (elcord-editor-icon "emacs_material_icon")
+  (elcord-display-buffer-details nil)
+  
+  :config
+  (elcord-mode))
 
 ;; }}}
 
