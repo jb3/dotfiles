@@ -12,10 +12,10 @@
 
 ;; Themes {{{
 
-(use-package atom-one-dark-theme
+(use-package one-themes
   :ensure t
   :config
-  (load-theme 'atom-one-dark t))
+  (load-theme 'one-light t))
 
 ;; }}}
 
