@@ -14,7 +14,7 @@ if [[ $(playerctl status -p spotify 2>&1) = "Playing" ]]; then
     NAME=$(get_meta spotify title)
     ARTIST=$(get_meta spotify artist)
 
-    echo "%{F#E5704B}$NAME%{F-} - $ARTIST"
+    echo "%{F#D5503B}$NAME%{F-} - $ARTIST"
 else
     if [[ $(playerctl status 2>&1) = "Playing" ]]; then
 	NAME=$(get_meta any title)
@@ -24,9 +24,9 @@ fi
 
 if [[ $NAME != "" ]] || [[ $NAME == "xesam:title" ]]; then
     if [[ $ARTIST = "xesam:artist" ]] || [[ $ARTIST = "" ]]; then
-	echo "%{F#E5704B}$NAME%{F-}"
+	echo "%{F#D5503B}$NAME%{F-}"
     else
-	echo "%{F#E5704B}$NAME%{F-} - $ARTIST"
+	echo "%{F#D5503B}$NAME%{F-} - $ARTIST"
     fi;
 else
     echo " ";
