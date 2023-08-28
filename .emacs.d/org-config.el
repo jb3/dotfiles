@@ -1,4 +1,4 @@
-(setq org-agenda-files '("~/org/agenda.org"))
+(setq org-agenda-files '("~/org/agenda.org" "~/org/contacts.org"))
 
 ;; Not directly org, but used for HTML export + open
 
