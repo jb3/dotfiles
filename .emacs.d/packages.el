@@ -194,3 +194,11 @@
   :ensure t)
 
 ;;; }}}
+
+
+;; Elixir {{{
+
+(use-package elixir-mode
+  :ensure t)
+
+;; }}}
