@@ -13,6 +13,12 @@
 (load "~/.emacs.d/org-config.el")
 (load "~/.emacs.d/packages.el")
 
+;; Utility for custom to get variables {{{
+
+(setq custom-unlispify-tag-names nil)
+
+;; }}}
+
 ;; Theming & Appearance {{{
 
 ;; Some themeing is handled in packages.el (e.g. loading themes), anything that isn't tied to a package is here.
@@ -42,7 +48,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(request all-the-icons projectile page-break-lines vimish-fold use-package dashboard avy atom-one-dark-theme)))
+   '(nyan-mode company treemacs-projectile treemacs elcord calfw request all-the-icons projectile page-break-lines vimish-fold use-package dashboard avy atom-one-dark-theme)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
